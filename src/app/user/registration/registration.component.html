@@ -1,0 +1,83 @@
+<!--<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="row" style="height: 450px;">
+      <div class="col-md-12 my-auto side-header">
+        <img src="/assets/img/add_user.png" class="mx-auto d-block">
+        <h1>User Registration</h1>
+        <p><em>-Using <strong>Asp.Net Core Web API</strong> and <strong>Angular 7</strong></em></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">-->
+    <form  [formGroup]="service.contactForm" autocomplete="off" (submit)="onSubmit()"> 
+        <div class="form-group required">
+          <label>UserName</label>
+  <!--formControlName will be control attribute inside the formModel like UserName,Email,FullName and
+  Password.So that we can achieve form controls-->
+          <input class="form-control" formControlName="UserName"> 
+          <div *ngIf="!service.UserName?.valid && (service.UserName?.dirty ||service.UserName?.touched)">
+            <div [hidden]="!service.UserName?.errors?.required">
+                UserName is required
+            </div>
+          </div>
+        </div>    
+       
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" formControlName="Email">
+            <div *ngIf="!service.Email?.valid && (service.Email?.dirty ||service.Email?.touched)">
+              <div [hidden]="!service.Email?.errors?.email">
+                Invalid email Address
+              </div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+          <label>FullName</label>
+          <input class="form-control" formControlName="FullName"> 
+          <div *ngIf="!service.FullName?.valid && (service.FullName?.dirty ||service.FullName?.touched)">
+            <div [hidden]="!service.FullName?.errors?.required">
+                This field is mandatory
+            </div>
+          </div>
+        </div>
+  
+        <div formGroupName="Passwords">
+          <div class="form-group required">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="Password"> 
+            <div *ngIf="!service.Password?.valid && (service.Password?.dirty ||service.Password?.touched)">
+              <div [hidden]="!service.Password?.errors?.required">
+                Password is required
+              </div>
+            <div [hidden]="!service.Password?.errors?.minlength">
+                Minimum length should be 5
+            </div>
+          </div>
+            
+          </div>
+          <div class="form-group required">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="ConfirmPassword"> 
+            <div *ngIf="!service.ConfirmPassword?.valid && (service.ConfirmPassword?.dirty ||service.ConfirmPassword?.touched)">
+              <div [hidden]="!service.ConfirmPassword?.errors?.required">
+                This Field is Mandatory
+              </div>
+            </div>
+            <div *ngIf="!service.ConfirmPassword?.valid && (service.ConfirmPassword?.dirty ||service.ConfirmPassword?.touched)">
+              <div [hidden]="!service.ConfirmPassword?.errors?.passwordMismatch">
+                Password does not match
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-11 offset-md-2">
+          <button type="submit" class="btn btn-lg btn-block">Sign Up</button>
+        </div>
+  
+      </div>
+      </form>
+      <!--
+    </div>
+  </div>-->
